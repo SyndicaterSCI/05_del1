@@ -1,7 +1,7 @@
 import java.util.Random;
 
 class Die {
-    int faceValue;
+    public int faceValue;
 
     // Generate a random number between 1 and 6, and sets the variable "faceValue" to that number. 
     // It simulates a dice roll.
