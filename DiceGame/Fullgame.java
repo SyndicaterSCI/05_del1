@@ -33,6 +33,7 @@ static void play(Player player){
                 die2.roll();
                 int sum = die1.faceValue + die2.faceValue;
                 player.addPoint(sum);
+
                 System.out.println("\nValue of the first die is " + die1.faceValue + "\nValue of the second die is " + die2.faceValue);
                 System.out.println("Total points of " + player.name + ": " + player.point);
                 verifyWin(player);
