@@ -20,7 +20,7 @@ class Fullgame {
         System.out.println("Welcome to the table " + player2.getName());
         // System.out.println("Type 'Roll' to Roll THEM DICE! " + "Its " +
         // player1.getName() + " turn");
-
+// This for loop is for switching between the two players.
         for (int i = 1; flag; i++) {
             if ((i % 2) != 0) {
                 play(player1);
@@ -108,4 +108,34 @@ class Fullgame {
         System.out.println("Total point of " + player.getName() + ": " + player.getTotalScore());
     }
 
+
+
+
+
+    static void play2(Player player) {
+        System.out.println("\nTurn of: " + player.getName()
+                + "\nEnter one of the following commands: 'Roll'To ROLL THEM DICE or 'Show points' or 'Exit'");
+              boolean playFlag = true;
+             while(playFlag){
+Scanner input= new Scanner(System.in);
+var playCommand=input.nextLine();
+switch(input.toLowerCase){
+    case "roll" -> {
+        die1.roll();
+        die2.roll();
+        int sum = die1.getValue() + die2.getValue();
+        player.setTotalScore(sum);
+        if(Die1.faceValue ==1 && Die2.faceValue ==1){
+           // FIND PÅ NOGET Sjovt System.out.println(input);
+        }
+
+}
+
+             }
+          
+
+
+
+
+}
 }
