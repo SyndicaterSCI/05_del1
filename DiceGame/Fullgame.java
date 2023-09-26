@@ -9,7 +9,7 @@ class Fullgame {
     static Player player2;
 
     public static void main(String[] args) {
-
+        // Vi skal have lavet et stykke kode for at skifte mellem de to spil!
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to THE DICE GAME! \n To play the game type Roll\n Rule 1 first to 40 point wins");
         System.out.println("Enter the name of Player 1");
@@ -19,13 +19,13 @@ class Fullgame {
         player2 = new Player(input.nextLine());
         System.out.println("Welcome to the table " + player2.getName());
         // System.out.println("Type 'Roll' to Roll THEM DICE! " + "Its " +
-        // player1.getName() + " turn");
-// This for loop is for switching between the two players.
+        // player1.getName() + " turn"); Has been made into comment to fix a bug
+        // This for loop is for switching between the two players.
         for (int i = 1; flag; i++) {
             if ((i % 2) != 0) {
-                play(player1);
+                play2(player1);
             } else if ((i % 2) == 0) {
-                play(player2);
+                play2(player2);
             }
         }
 
@@ -49,7 +49,15 @@ class Fullgame {
      * 
      * gameplay loop
      */
-    static void play(Player player) {
+
+    static void standardPro(int sum, Player player) {
+        player.setTotalScore(sum);
+        System.out
+                .println("\nValue of first die is " + die1.getValue() + "\nValue of second die is " + die2.getValue());
+        System.out.println("Total point of " + player.getName() + ": " + player.getTotalScore());
+    }
+
+    static void play2(Player player) {
         System.out.println("\nTurn of: " + player.getName()
                 + "\nEnter one of the following commands: 'Roll'To ROLL THEM DICE or 'Show points' or 'Exit'");
         boolean playFlag = true;
@@ -62,36 +70,42 @@ class Fullgame {
                     die2.roll();
                     int sum = die1.getValue() + die2.getValue();
                     player.setTotalScore(sum);
+                    boolean areEqual = die1.faceValue == die2.faceValue;
+                    if (die1.faceValue == 1 && die2.faceValue == 1) {
+                        System.out.println(
+                                "Snake eyyyyeeeeees you encountered the Dungeons Snake!" + "\nIt ATE all ya points!");
+                        player.setTotalScore(0);
+                        playFlag = false;
 
-                    System.out.println("\nValue of the first die is " + die1.getValue()
-                            + "\nValue of the second die is " + die2.getValue());
-                    System.out.println("Total points of " + player.getName() + ": " + player.getTotalScore());
-                    verifyWin(player);
+                    } else if (areEqual) {
+                        int equalsix = 0;
+                        System.out.println("Congratulations Adventurer you rolled EQUALS");
+                        if (die1.faceValue == 6) {
+                            equalsix++;
+                        } else {
+                            equalsix = 0;
+                        }
+                        if (equalsix == 2 || player.totalScore <= 40)
+                            ;
+                        System.out.println("CONGRATULATIONS" + player.name
+                                + "Adventurer you have escaped the Dungeon, ya mate got left behind!");
+
+                        playFlag = false;
+                        flag = false;
+                    } else {
+                        standardPro(sum, player);
+                        System.out.println("You get another Roll Adventurer, use it wisely");
+                        System.out.println("Its " + player.name + " turn");
+                    }
+                    standardPro(sum, player);
                     playFlag = false;
-                }
-                case "show points" -> {
-                    System.out.println("Total Points of " + player1.getName() + ": " + player1.getTotalScore()
-                            + "\nTotal Points of " + player2.getName() + ": " + player2.getTotalScore());
-                }
-                case "exit" -> {
-                    System.out.println("Thank you for playing!");
-                    playFlag = false;
-                    flag = false;
-                }
-                default -> {
-                    System.out.println("\nCommand not understood. Try again");
+
                 }
             }
+
         }
+
     }
-
-    // features
-
-    /*
-     * verifyWin
-     * 
-     * setTotalScore(sum)
-     */
 
     static void verifyWin(Player player) {
         if (player.getTotalScore() >= 40) {
@@ -100,42 +114,4 @@ class Fullgame {
             flag = false;
         }
     }
-
-    static void standardPro(int sum, Player player) {
-        player.setTotalScore(sum);
-        System.out
-                .println("\nValue of first die is " + die1.getValue() + "\nValue of second die is " + die2.getValue());
-        System.out.println("Total point of " + player.getName() + ": " + player.getTotalScore());
-    }
-
-
-
-
-
-    static void play2(Player player) {
-        System.out.println("\nTurn of: " + player.getName()
-                + "\nEnter one of the following commands: 'Roll'To ROLL THEM DICE or 'Show points' or 'Exit'");
-              boolean playFlag = true;
-             while(playFlag){
-Scanner input= new Scanner(System.in);
-var playCommand=input.nextLine();
-switch(input.toLowerCase){
-    case "roll" -> {
-        die1.roll();
-        die2.roll();
-        int sum = die1.getValue() + die2.getValue();
-        player.setTotalScore(sum);
-        if(Die1.faceValue ==1 && Die2.faceValue ==1){
-           // FIND PÅ NOGET Sjovt System.out.println(input);
-        }
-
-}
-
-             }
-          
-
-
-
-
-}
 }
