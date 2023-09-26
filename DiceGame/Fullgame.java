@@ -33,6 +33,22 @@ static void play(Player player){
                 die2.roll();
                 int sum = die1.faceValue + die2.faceValue;
                 player.addPoint(sum);
+
+                System.out.println("\nValue of the first die is " + die1.faceValue + "\nValue of the second die is " + die2.faceValue);
+                System.out.println("Total points of " + player.name + ": " + player.point);
+                verifyWin(player);
+                playFlag = false;
+            }
+            case "show points" -> {
+                System.out.println("Total Points of " + player1.name + ": " + player1.point + "\nTotal Points of " + player2.name + ": " + player2.point);
+            }
+            case "exit" -> {
+                System.out.println("Thank you for playing!");
+                playFlag = false;
+                flag = false;
+            }
+            default -> {
+                System.out.println("\nCommand not understood. Try again");
             }
         }
     }
