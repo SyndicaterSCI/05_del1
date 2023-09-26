@@ -114,4 +114,44 @@ class Fullgame {
             flag = false;
         }
     }
+
 }
+
+    static void play(Player player) {
+        System.out.println("\nTurn of: " + player.getName()
+                +
+                "\nEnter one of the following commands: 'Roll'To ROLL THEM DICE or 'Show points' or 'Exit'");
+        boolean playFlag = true;
+        while (playFlag) {
+            Scanner input = new Scanner(System.in);
+            var playCommand = input.nextLine();
+            switch (playCommand.toLowerCase()) {
+                case "roll" -> {
+                    die1.roll();
+                    die2.roll();
+                    int sum = die1.getValue() + die2.getValue();
+                    player.setTotalScore(sum);
+
+                    System.out.println("\nValue of the first die is " + die1.getValue()
+                            + "\nValue of the second die is " + die2.getValue());
+                    System.out.println("Total points of " + player.getName() + ": " +
+                            player.getTotalScore());
+                    verifyWin(player);
+                    playFlag = false;
+                }
+                case "show points" -> {
+                    System.out.println("Total Points of " + player1.getName() + ": " +
+                            player1.getTotalScore()
+                            + "\nTotal Points of " + player2.getName() + ": " + player2.getTotalScore());
+                }
+                case "exit" -> {
+                    System.out.println("Thank you for playing!");
+                    playFlag = false;
+                    flag = false;
+                }
+                default -> {
+                    System.out.println("\nCommand not understood. Try again");
+                }
+            }
+        }
+    }
