@@ -68,12 +68,12 @@ class Fullgame {
                 case "roll" -> {
                     die1.roll();
                     die2.roll();
-                    int sum = die1.getValue() + die2.getValue();
-                    player.setTotalScore(sum);
-                    boolean areEqual = die1.faceValue == die2.faceValue;
+                    int sum = die1.faceValue + die2.faceValue;
+                    boolean areEqual = (die1.faceValue == die2.faceValue);
                     if (die1.faceValue == 1 && die2.faceValue == 1) {
+                        //Double 1's sets your current points to 0
                         System.out.println(
-                                "Snake eyyyyeeeeees you encountered the Dungeons Snake!" + "\nIt ATE all ya points!");
+                                "Snake eyyyyeeeeees you encountered the Dungeons Snake!" + "\nIT ATE all ya points!");
                         player.setTotalScore(0);
                         playFlag = false;
 
@@ -85,21 +85,25 @@ class Fullgame {
                         } else {
                             equalsix = 0;
                         }
-                        if (equalsix == 2 || player.totalScore <= 40)
-                            ;
+                        if (equalsix == 2 || player.totalScore >= 40){
                         System.out.println("CONGRATULATIONS" + player.name
                                 + "Adventurer you have escaped the Dungeon, ya mate got left behind!");
 
                         playFlag = false;
                         flag = false;
-                    } else {
+                        } else {
                         standardPro(sum, player);
                         System.out.println("You get another Roll Adventurer, use it wisely");
                         System.out.println("Its " + player.name + " turn");
+                        } 
+                    } else {
+                        standardPro(sum, player);
+                        playFlag = false;
                     }
-                    standardPro(sum, player);
-                    playFlag = false;
 
+                }
+                default -> {
+                    System.out.println("You seem to be drunk on adventure, I did not understand you. Try again!");
                 }
             }
 
@@ -117,41 +121,4 @@ class Fullgame {
 
 }
 
-    static void play(Player player) {
-        System.out.println("\nTurn of: " + player.getName()
-                +
-                "\nEnter one of the following commands: 'Roll'To ROLL THEM DICE or 'Show points' or 'Exit'");
-        boolean playFlag = true;
-        while (playFlag) {
-            Scanner input = new Scanner(System.in);
-            var playCommand = input.nextLine();
-            switch (playCommand.toLowerCase()) {
-                case "roll" -> {
-                    die1.roll();
-                    die2.roll();
-                    int sum = die1.getValue() + die2.getValue();
-                    player.setTotalScore(sum);
-
-                    System.out.println("\nValue of the first die is " + die1.getValue()
-                            + "\nValue of the second die is " + die2.getValue());
-                    System.out.println("Total points of " + player.getName() + ": " +
-                            player.getTotalScore());
-                    verifyWin(player);
-                    playFlag = false;
-                }
-                case "show points" -> {
-                    System.out.println("Total Points of " + player1.getName() + ": " +
-                            player1.getTotalScore()
-                            + "\nTotal Points of " + player2.getName() + ": " + player2.getTotalScore());
-                }
-                case "exit" -> {
-                    System.out.println("Thank you for playing!");
-                    playFlag = false;
-                    flag = false;
-                }
-                default -> {
-                    System.out.println("\nCommand not understood. Try again");
-                }
-            }
-        }
-    }
+   
