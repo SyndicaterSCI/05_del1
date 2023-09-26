@@ -27,7 +27,7 @@ class Fullgame {
                 play(player2);
             }
         }
-
+        
     }
 
 /*
@@ -59,7 +59,7 @@ static void play(Player player){
                 die1.roll();
                 die2.roll();
                 int sum = die1.getValue() + die2.getValue();
-                player.addPoint(sum);
+                player.setTotalScore(sum);
 
                 System.out.println("\nValue of the first die is " + die1.getValue() + "\nValue of the second die is " + die2.getValue());
                 System.out.println("Total points of " + player.getName() + ": " + player.getTotalScore());
@@ -86,21 +86,18 @@ static void play(Player player){
 /*
 verifyWin 
 
-addPoint 
-
-
- */
+setTotalScore(sum)*/
 
 
  static void verifyWin(Player player){
-    if(player.point >= 40){
+    if(player.getTotalScore() >= 40){
         System.out.println("Congratulations! " + player.getName() + " has won the game with " + player.getTotalScore() + " points");
         flag = false;
     }
 }
 
 static void standardPro(int sum, Player player){
-    player.addPoint (sum);
+    player.setTotalScore(sum);
     System.out.println("\nValue of first die is " + die1.getValue() + "\nValue of second die is " + die2.getValue());
     System.out.println("Total point of " + player.getName() + ": " + player.getTotalScore());
     }
