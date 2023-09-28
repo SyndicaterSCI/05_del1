@@ -22,6 +22,7 @@ public class Player {
     }
 
     // Calculate the score, not return value
+
     public void setTotalScore(int score) {
         totalScore += score;
     }
@@ -30,4 +31,5 @@ public class Player {
     public void resetTotalScore(){
         totalScore = 0;
     }
+
 }
