@@ -52,7 +52,7 @@ class Fullgame {
                     int sum = die1.faceValue + die2.faceValue;
                     boolean areEqual = (die1.faceValue == die2.faceValue);
                     if (die1.faceValue == 1 && die2.faceValue == 1) {
-                        //Double 1's sets your current points to 0
+                        // Double 1's sets your current points to 0
                         System.out.println(
                                 "Snake eyyyyeeeeees you encountered the Dungeons Snake!" + "\nIT ATE all ya points!");
                         player.totalScore = 0;
@@ -60,23 +60,23 @@ class Fullgame {
 
                     } else if (areEqual) {
                         int equalsix = 0;
-                        System.out.println("Congratulations Adventurer you rolled EQUALS");
+
                         if (die1.faceValue == 6) {
                             equalsix++;
                         } else {
                             equalsix = 0;
                         }
-                        if (equalsix == 2 || player.totalScore >= 40){
-                        System.out.println("CONGRATULATIONS" + player.name
-                                + "Adventurer you have escaped the Dungeon, ya mate got left behind!");
+                        if (equalsix == 2 || player.totalScore >= 40) {
+                            System.out.println("CONGRATULATIONS" + player.name
+                                    + "Adventurer you have escaped the Dungeon, ya mate got left behind!");
 
-                        playFlag = false;
-                        flag = false;
+                            playFlag = false;
+                            flag = false;
                         } else {
-                        standardPro(sum, player);
-                        System.out.println("You get another Roll Adventurer, use it wisely");
-                        System.out.println("Its " + player.name + " turn");
-                        } 
+                            standardPro(sum, player);
+                            System.out.println("You get another Roll Adventurer, use it wisely");
+                            System.out.println("Its " + player.name + " turn");
+                        }
                     } else {
                         standardPro(sum, player);
                         playFlag = false;
@@ -110,5 +110,3 @@ class Fullgame {
     }
 
 }
-
-   
