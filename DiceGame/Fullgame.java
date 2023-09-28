@@ -11,7 +11,14 @@ class Fullgame {
     public static void main(String[] args) {
         // Vi skal have lavet et stykke kode for at skifte mellem de to spil!
         Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to THE DICE GAME! \nTo play the game type Roll\nRule 1 first to 40 point wins");
+        System.out.println("Welcome adventures!\n\nYou have entered the perilous Dice Dungeon of Doom - here awaits glory, as well as damnation.");
+        System.out.println("You have one task: to gather enough magical power, to slay the much feared Dice Demon.");
+        System.out.println("Your weapon: this set of magical dice, which will grow your magical power.");
+        System.out.println("\nTo slay the Demon, you will have to gather 40 power points or more, and land an awesome double roll.");
+        System.out.println("There is another mythical way to slay the Demon.");
+        System.out.println("If you land a double roll of two 6's twice in a row, the awesomeness of your roll is enough to make the Demon instantaneously burst up in flames.");
+        System.out.println("None have accomplished this, but you may be the first.");
+        System.out.println("But beware! Within the Dice Dungeon of Doom, another dangerous creature lies dormant:\nThe big Snake Uroboros.");
         System.out.println("\nEnter the name of Player 1");
         player1 = new Player(input.nextLine());
 
