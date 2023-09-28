@@ -11,13 +11,13 @@ class Fullgame {
     public static void main(String[] args) {
         // Vi skal have lavet et stykke kode for at skifte mellem de to spil!
         Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to THE DICE GAME! \n To play the game type Roll\n Rule 1 first to 40 point wins");
-        System.out.println("Enter the name of Player 1");
+        System.out.println("Welcome to THE DICE GAME! \nTo play the game type Roll\nRule 1 first to 40 point wins");
+        System.out.println("\nEnter the name of Player 1");
         player1 = new Player(input.nextLine());
 
-        System.out.println("Welcome to the table " + player1.getName() + "\n Enter the name of Player 2");
+        System.out.println("\nWelcome to the table " + player1.getName() + "\nEnter the name of Player 2");
         player2 = new Player(input.nextLine());
-        System.out.println("Welcome to the table " + player2.getName());
+        System.out.println("\nWelcome to the table " + player2.getName());
         // System.out.println("Type 'Roll' to Roll THEM DICE! " + "Its " +
         // player1.getName() + " turn"); Has been made into comment to fix a bug
         // This for loop is for switching between the two players.
