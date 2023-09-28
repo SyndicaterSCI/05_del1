@@ -1,0 +1,1 @@
+runFullgame.bat and testProgram.bat, must be run in the same directory as the .class files.
