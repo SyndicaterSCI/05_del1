@@ -74,7 +74,7 @@ class Fullgame {
                         //Double 1's sets your current points to 0
                         System.out.println(
                                 "Snake eyyyyeeeeees you encountered the Dungeons Snake!" + "\nIT ATE all ya points!");
-                        player.setTotalScore(0);
+                        player.totalScore = 0;
                         playFlag = false;
 
                     } else if (areEqual) {
