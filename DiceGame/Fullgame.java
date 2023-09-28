@@ -7,10 +7,121 @@ class Fullgame {
     static Die die2 = new Die();
     static Player player1;
     static Player player2;
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         // Vi skal have lavet et stykke kode for at skifte mellem de to spil!
-        Scanner input = new Scanner(System.in);
+        startGame();
+      
+        /*
+        This for loop is for switching between the two players.
+        The switch between players happens when inside the loop, 'if' statements check if i is divisible by 2 or not. In case it isn't
+        it is player1's turn. In case it is, it's player2's turn.
+        Takes a boolean flag (initially true) as condition, which will be broken inside the play2() function in case 
+        player exits game or win conditions are met.
+        */
+
+        for (int i = 1; flag; i++) {
+            if ((i % 2) != 0) {
+                play2(player1);
+            } else if ((i % 2) == 0) {
+                play2(player2);
+            }
+        }
+        input.close();
+
+    }
+
+    // Adds the total point from dice sum to players totalscore, and prints each die value and total score of player
+    static void standardPro(int sum, Player player) {
+        player.setTotalScore(sum);
+        System.out.println("\nValue of first die is " + die1.getValue() + "\nValue of second die is " + die2.getValue());
+        System.out.println("Total point of " + player.getName() + ": " + player.getTotalScore());
+    }
+
+
+    // Central game function. 
+    // Parameter: Player object 
+    // Allows the player to enter "roll", "show points" or "exit" commands.
+    static void play2(Player player) {
+        System.out.println("\nTurn of: " + player.getName() + "\nEnter one of the following commands: \n- 'roll' to ROLL THEM DICE!  \n- 'show points' \n- 'exit'");
+        // We create 'boolean flag' and set it to 'true', so that we can break the while loop inside the nested switch statement.
+        boolean playFlag = true;
+        while (playFlag) {
+            // Takes en input and sets it as a variable, to be checked inside switch statment. This is the players command.
+            var playCommand = input.nextLine();
+            switch (playCommand.toLowerCase()) {
+                case "roll" -> {
+                    // We roll both dice, create a variable of their sum and a boolean based on if their value is equal or not aka. a double roll.
+                    die1.roll();
+                    die2.roll();
+                    int sum = die1.getValue() + die2.getValue();
+                    boolean areEqual = (die1.getValue() == die2.getValue());
+                    //If statement: we check if double 1's. Player total score is set to 0. Turn ends by declaring boolean flag false.
+                    if (die1.getValue() == 1 && die2.getValue() == 1) {
+                        System.out.println("\nSnake eyyyyeeeeees you encountered the Dungeons Snake!" + "\nIT ATE all ya points!");
+                        player.resetTotalScore();
+                        playFlag = false;
+                    
+                    //Else if: we check if it's a double rolled (not 1's).
+                    } else if (areEqual) {
+                        // We create a counter and for each double 6's, the counter goes up 1.
+                        int equalsix = 0;
+                        if (die1.getValue() == 6) {
+                            equalsix++;
+                        // If it's not a double 6's, counter goes to 0 again.
+                        } else {
+                            equalsix = 0;
+                        }
+                        // Checks to see if it's second double 6's in a row, and if player points are 40 or above
+                        if (equalsix == 2 || player.getTotalScore() >= 40) {
+                            System.out.println("\nCONGRATULATIONS " + player.getName() + " Adventurer you have escaped the Dungeon, ya mate got left behind!");
+                            // Both boolean flag are set to false, so both the for and while loop ends, thus terminating the game.
+                            playFlag = false;
+                            flag = false;
+                        
+                        } 
+                        
+                        // If not 2 double 6's in a row, the points will be added to player totalscore, while loop is not broken, and player get another turn 
+                        else {
+                            standardPro(sum, player);
+                            System.out.println("\nYou get another Roll Adventurer, use it wisely");
+                            System.out.println("Its " + player.getName() + " turn");
+                        }
+                    
+                    // If a 'regular' roll, point will be added, boolean flag set to false, ending player turn.
+                    } else {
+                        standardPro(sum, player);
+                        playFlag = false;
+                    }
+
+                }
+
+                // Prints the total score of both players
+                case "show points" -> {
+                    System.out.println("\nTotal points of " + player1.getName() + ": " + player1.getTotalScore());
+                    System.out.println("Total points of " + player2.getName() + ": " + player2.getTotalScore());
+                }
+
+                // End program, by setting both boolean flags to false
+                case "exit" -> {
+                    System.out.println("\nThank you for playing Travelers!");
+                    playFlag = false;
+                    flag = false;
+                }
+
+                // Invalid input: loop continues and asks for another input
+                default -> {
+                    System.out.println("\nYou seem to be drunk on adventure, I did not understand you. Try again!");
+                }
+            }
+
+        }
+
+    }
+
+    //This function prints the rules, asks for input from each player and creates two Player object with given input.
+    static void startGame(){
         System.out.println("Welcome adventures!\n\nYou have entered the perilous Dice Dungeon of Doom - here awaits glory, as well as damnation.");
         System.out.println("You have one task: to gather enough magical power, to slay the much feared Dice Demon.");
         System.out.println("Your weapon: this set of magical dice, which will grow your magical power.");
@@ -29,94 +140,6 @@ class Fullgame {
         System.out.println("\nAnd what is your name second adventurer?");
         player2 = new Player(input.nextLine());
         
-        
-        // This for loop is for switching between the two players.
-        for (int i = 1; flag; i++) {
-            if ((i % 2) != 0) {
-                play2(player1);
-            } else if ((i % 2) == 0) {
-                play2(player2);
-            }
-        }
-
-    }
-
-    static void standardPro(int sum, Player player) {
-        player.setTotalScore(sum);
-        System.out
-                .println("\nValue of first die is " + die1.getValue() + "\nValue of second die is " + die2.getValue());
-        System.out.println("Total point of " + player.getName() + ": " + player.getTotalScore());
-    }
-
-    static void play2(Player player) {
-        System.out.println("\nTurn of: " + player.getName()
-                + "\nEnter one of the following commands: 'roll' to ROLL THEM DICE or 'show points' or 'exit'");
-        boolean playFlag = true;
-        while (playFlag) {
-            Scanner input = new Scanner(System.in);
-            var playCommand = input.nextLine();
-            switch (playCommand.toLowerCase()) {
-                case "roll" -> {
-                    die1.roll();
-                    die2.roll();
-                    int sum = die1.faceValue + die2.faceValue;
-                    boolean areEqual = (die1.faceValue == die2.faceValue);
-                    if (die1.faceValue == 1 && die2.faceValue == 1) {
-                        // Double 1's sets your current points to 0
-                        System.out.println(
-                                "Snake eyyyyeeeeees you encountered the Dungeons Snake!" + "\nIT ATE all ya points!");
-                        player.totalScore = 0;
-                        playFlag = false;
-
-                    } else if (areEqual) {
-                        int equalsix = 0;
-
-                        if (die1.faceValue == 6) {
-                            equalsix++;
-                        } else {
-                            equalsix = 0;
-                        }
-                        if (equalsix == 2 || player.totalScore >= 40) {
-                            System.out.println("CONGRATULATIONS " + player.name
-                                    + " Adventurer you have escaped the Dungeon, ya mate got left behind!");
-
-                            playFlag = false;
-                            flag = false;
-                        } else {
-                            standardPro(sum, player);
-                            System.out.println("You get another Roll Adventurer, use it wisely");
-                            System.out.println("Its " + player.name + " turn");
-                        }
-                    } else {
-                        standardPro(sum, player);
-                        playFlag = false;
-                    }
-
-                }
-                case "show points" -> {
-                    System.out.println("\nTotal points of " + player1.name + ": " + player1.totalScore);
-                    System.out.println("Total points of " + player2.name + ": " + player2.totalScore);
-                }
-                case "exit" -> {
-                    System.out.println("Thank you for playing ADVENTURES!");
-                    playFlag = false;
-                    flag = false;
-                }
-                default -> {
-                    System.out.println("You seem to be drunk on adventure, I did not understand you. Try again!");
-                }
-            }
-
-        }
-
-    }
-
-    static void verifyWin(Player player) {
-        if (player.getTotalScore() >= 40) {
-            System.out.println("Congratulations! " + player.getName() + " has won the game with "
-                    + player.getTotalScore() + " points");
-            flag = false;
-        }
     }
 
 }
