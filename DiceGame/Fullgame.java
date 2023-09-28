@@ -31,25 +31,6 @@ class Fullgame {
 
     }
 
-    /*
-     * magi call static til
-     * boolean (flag = true)
-     * die
-     * player
-     */
-
-    /*
-     * Scanner for game rule
-     * 
-     * 
-     * for loop med flag "skift mellem player 1 og player 2"
-     * 
-     * 
-     * 
-     * 
-     * gameplay loop
-     */
-
     static void standardPro(int sum, Player player) {
         player.setTotalScore(sum);
         System.out
