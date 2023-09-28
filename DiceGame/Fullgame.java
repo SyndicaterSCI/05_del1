@@ -28,8 +28,8 @@ class Fullgame {
         player1 = new Player(input.nextLine());
         System.out.println("\nAnd what is your name second adventurer?");
         player2 = new Player(input.nextLine());
-        // System.out.println("Type 'Roll' to Roll THEM DICE! " + "Its " +
-        // player1.getName() + " turn"); Has been made into comment to fix a bug
+        
+        
         // This for loop is for switching between the two players.
         for (int i = 1; flag; i++) {
             if ((i % 2) != 0) {
