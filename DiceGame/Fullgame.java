@@ -102,6 +102,10 @@ class Fullgame {
                     }
 
                 }
+                case "show points" -> {
+                    System.out.println("\nTotal points of " + player1.name + ": " + player1.totalScore);
+                    System.out.println("Total points of " + player2.name + ": " + player2.totalScore);
+                }
                 default -> {
                     System.out.println("You seem to be drunk on adventure, I did not understand you. Try again!");
                 }
