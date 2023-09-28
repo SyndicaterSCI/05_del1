@@ -77,7 +77,7 @@ class Fullgame {
                             equalsix = 0;
                         }
                         if (equalsix == 2 || player.totalScore >= 40) {
-                            System.out.println(" CONGRATULATIONS" + player.name
+                            System.out.println("CONGRATULATIONS " + player.name
                                     + " Adventurer you have escaped the Dungeon, ya mate got left behind!");
 
                             playFlag = false;
