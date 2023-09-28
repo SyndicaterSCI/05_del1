@@ -12,7 +12,7 @@ class Fullgame {
     public static void main(String[] args) {
         // Vi skal have lavet et stykke kode for at skifte mellem de to spil!
         startGame();
-        
+      
         /*
         This for loop is for switching between the two players.
         The switch between players happens when inside the loop, 'if' statements check if i is divisible by 2 or not. In case it isn't
@@ -20,6 +20,7 @@ class Fullgame {
         Takes a boolean flag (initially true) as condition, which will be broken inside the play2() function in case 
         player exits game or win conditions are met.
         */
+
         for (int i = 1; flag; i++) {
             if ((i % 2) != 0) {
                 play2(player1);
