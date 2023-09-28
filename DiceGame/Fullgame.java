@@ -11,13 +11,23 @@ class Fullgame {
     public static void main(String[] args) {
         // Vi skal have lavet et stykke kode for at skifte mellem de to spil!
         Scanner input = new Scanner(System.in);
-        System.out.println("Welcome to THE DICE GAME! \nTo play the game type Roll\nRule 1 first to 40 point wins");
-        System.out.println("\nEnter the name of Player 1");
+        System.out.println("Welcome adventures!\n\nYou have entered the perilous Dice Dungeon of Doom - here awaits glory, as well as damnation.");
+        System.out.println("You have one task: to gather enough magical power, to slay the much feared Dice Demon.");
+        System.out.println("Your weapon: this set of magical dice, which will grow your magical power.");
+        System.out.println("\nTo slay the Demon, you will have to gather 40 power points or more, and land an awesome double roll.");
+        System.out.println("\nThere is another mythical way to slay the Demon.");
+        System.out.println("If you land a double roll of two 6's twice in a row, the awesomeness of your roll is enough to make the Demon instantaneously burst up in flames.");
+        System.out.println("None have accomplished this, but you may be the first.");
+        System.out.println("\nBut beware! Within the Dice Dungeon of Doom, another dangerous creature lies dormant:\nThe big Snake Uroboros.");
+        System.out.println("This creature is attracted by double 1's, so if you land such a roll, he will suck all your magical power, and your power points will reset to 0.");
+        System.out.println("\nBut glorious gifts, also awaits you adcenturer.\nIf you land a double roll which is not the feared double 1's, you will be gifted another roll.");
+        System.out.println("\nDuring your travels, you will have the option of:\n- Rolling the dice to increase your magical power by typing 'Roll'.");
+        System.out.println("- Seeing the total magical power of you and you fellow adventure, by typing 'show points'. Don't worry you will still be able to roll.");
+        System.out.println("- Aborting the Dice Dungeon of Doom by typing 'exit', if the travels whould prove too frightening.");
+        System.out.println("\nKnowing the risk of stepping into this dungeon, what is your name first adventurer?");
         player1 = new Player(input.nextLine());
-
-        System.out.println("\nWelcome to the table " + player1.getName() + "\nEnter the name of Player 2");
+        System.out.println("\nAnd what is your name second adventurer?");
         player2 = new Player(input.nextLine());
-        System.out.println("\nWelcome to the table " + player2.getName());
         // System.out.println("Type 'Roll' to Roll THEM DICE! " + "Its " +
         // player1.getName() + " turn"); Has been made into comment to fix a bug
         // This for loop is for switching between the two players.
@@ -88,7 +98,7 @@ class Fullgame {
                     System.out.println("Total points of " + player2.name + ": " + player2.totalScore);
                 }
                 case "exit" -> {
-                    System.out.println("Thank you for playing adventure!");
+                    System.out.println("Thank you for playing ADVENTURES!");
                     playFlag = false;
                     flag = false;
                 }
