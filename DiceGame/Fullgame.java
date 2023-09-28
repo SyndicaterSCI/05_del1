@@ -106,6 +106,11 @@ class Fullgame {
                     System.out.println("\nTotal points of " + player1.name + ": " + player1.totalScore);
                     System.out.println("Total points of " + player2.name + ": " + player2.totalScore);
                 }
+                case "exit" -> {
+                    System.out.println("Thank you for playing adventure!");
+                    playFlag = false;
+                    flag = false;
+                }
                 default -> {
                     System.out.println("You seem to be drunk on adventure, I did not understand you. Try again!");
                 }
