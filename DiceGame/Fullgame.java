@@ -50,7 +50,7 @@ class Fullgame {
 
     static void play2(Player player) {
         System.out.println("\nTurn of: " + player.getName()
-                + "\nEnter one of the following commands: 'Roll'To ROLL THEM DICE or 'Show points' or 'Exit'");
+                + "\nEnter one of the following commands: 'roll' to ROLL THEM DICE or 'show points' or 'exit'");
         boolean playFlag = true;
         while (playFlag) {
             Scanner input = new Scanner(System.in);
