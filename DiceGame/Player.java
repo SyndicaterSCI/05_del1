@@ -25,4 +25,9 @@ public class Player {
     public void setTotalScore(int score) {
         totalScore += score;
     }
+
+    // Resets total score of player to 0
+    public void resetTotalScore(){
+        totalScore = 0;
+    }
 }
