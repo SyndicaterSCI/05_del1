@@ -50,7 +50,7 @@ class Fullgame {
         while (playFlag) {
             // Takes en input and sets it as a variable, to be checked inside switch statment. This is the players command.
             var playCommand = input.nextLine();
-            //switch (playCommand.toLowerCase()) {
+            
                 if(playCommand.toLowerCase().equals("roll")) {
                     // We roll both dice, create a variable of their sum and a boolean based on if their value is equal or not aka. a double roll.
                     die1.roll();
@@ -114,7 +114,7 @@ class Fullgame {
                 else {
                     System.out.println("\nYou seem to be drunk on adventure, I did not understand you. Try again!");
                 }
-            //}
+            
 
         }
 

@@ -19,20 +19,20 @@ class testProgram{
             flag2 = true;
             while(flag2){
                 String testAnswer = answer.nextLine();
-                switch (testAnswer.toLowerCase()){
-                    case "y" ->{
+                
+                    if(testAnswer.toLowerCase().equals("y")){
                         flag2 = false;
                     }
-                    case "n" ->{
+                    else if(testAnswer.toLowerCase().equals("n")){
                         System.out.println("Testing finished");
                         flag2 = false;
                         flag = false;
                     }
-                    default -> {
+                    else {
                         System.out.println("Please enter 'Y' for new test or 'N' to exit");
                     }
                 }
-            }
+            
             tester.testNumberIncrement();
         }
         
