@@ -24,6 +24,7 @@ public class testClass{
         testNumber++;
     }
 
+    // Generates an array of length = numberOfThrows, and fills the array with the result of the sum of the nubmer of rolls
     public void testThrow(){
         doubleCounter = 0;
         throwResult = new int[numberOfThrow];
@@ -38,6 +39,7 @@ public class testClass{
         }
     }
 
+    // Creates an array of length 11 (number of possible throws), and increments the count of each possible throw, when it occurs in array throwResult
     public void info(){
         occurence = new int[11];
         for(int x : throwResult){
@@ -45,6 +47,7 @@ public class testClass{
         }
     }
 
+    // Converts occurence of throws into percent compared to amount of rolls
     public void statistic(){
         throwStat = new double[occurence.length];
         double number = numberOfThrow;
@@ -54,6 +57,7 @@ public class testClass{
         }
     }
 
+    // Calculates the difference in percentages between, the theoretical probability and the occured probability of our throws 
     public void statDiffPercent(){
         statDiffPercent = new double[throwStat.length];
         for(int i = 0; i < throwStat.length; i++){
@@ -62,6 +66,7 @@ public class testClass{
         }
     }
 
+    // Calculates the overall deviation
     public void accuracy(){
         double sum = 0;
         for(double x : statDiffPercent){
@@ -70,6 +75,7 @@ public class testClass{
         accuracy = 100 - (sum / statDiffPercent.length);
     }
 
+    // Rounds the double, to contain max 2 digits after comma
     public String roundToString(double a){
         String b = "" + a;
         if(b.length()>4){
@@ -78,6 +84,7 @@ public class testClass{
         return b;
     }
 
+    // Simulates the roll from the game, in order to calculate response time
     public void simulateRoll(){
         die1.roll();
         die2.roll();
@@ -87,6 +94,7 @@ public class testClass{
         System.out.println("Total point of " + player.name + ": " + player.totalScore);
     }
 
+    // Generates the arrays needed to print, using previous functions.
     public void generateArrays(){
         testThrow();
         info();
@@ -95,6 +103,7 @@ public class testClass{
         accuracy();
     }
 
+    // prints the info in table and so on
     public void printInfo(){
         
         // Generates necessary arrays for printing info
