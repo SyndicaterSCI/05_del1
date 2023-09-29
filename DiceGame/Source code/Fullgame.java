@@ -50,8 +50,8 @@ class Fullgame {
         while (playFlag) {
             // Takes en input and sets it as a variable, to be checked inside switch statment. This is the players command.
             var playCommand = input.nextLine();
-            switch (playCommand.toLowerCase()) {
-                case "roll" -> {
+            //switch (playCommand.toLowerCase()) {
+                if(playCommand.toLowerCase().equals("roll")) {
                     // We roll both dice, create a variable of their sum and a boolean based on if their value is equal or not aka. a double roll.
                     die1.roll();
                     die2.roll();
@@ -98,23 +98,23 @@ class Fullgame {
                 }
 
                 // Prints the total score of both players
-                case "show points" -> {
+                else if(playCommand.toLowerCase().equals("show points")){
                     System.out.println("\nTotal points of " + player1.getName() + ": " + player1.getTotalScore());
                     System.out.println("Total points of " + player2.getName() + ": " + player2.getTotalScore());
                 }
 
                 // End program, by setting both boolean flags to false
-                case "exit" -> {
+                else if(playCommand.toLowerCase().equals("exit")) {
                     System.out.println("\nThank you for playing Travelers!");
                     playFlag = false;
                     flag = false;
                 }
 
                 // Invalid input: loop continues and asks for another input
-                default -> {
+                else {
                     System.out.println("\nYou seem to be drunk on adventure, I did not understand you. Try again!");
                 }
-            }
+            //}
 
         }
 
